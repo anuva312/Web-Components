@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Components</title>
+    <script src="modal.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <uc-modal>
+      <div slot="modal-header">Confirm</div>
+      <p>Are you sure you want to confirm the payment?</p>
+    </uc-modal>
+    <button id="open-modal" onclick="onButtonClick()">Open Modal</button>
+  </body>
+  <script src="script.js"></script>
+</html>
