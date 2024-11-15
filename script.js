@@ -22,3 +22,34 @@ const onDrawerOpenButtonClick = function (position) {
     drawerElement.open();
   }
 };
+
+// Code for Tree Structure
+const data = [
+  {
+    name: "Node 1",
+    id: "0000001",
+    children: [
+      {
+        name: "Node 12",
+        id: "0000002",
+        children: [
+          {
+            name: "Node 121",
+            id: "0000005",
+            children: [{ name: "Node 1211", id: "0000001", children: [] }],
+          },
+        ],
+      },
+      {
+        name: "Node 13",
+        id: "0000003",
+        children: [{ name: "Node 131", id: "0000006", children: [] }],
+      },
+      { name: "Node 14", id: "0000004", children: [] },
+    ],
+  },
+  { name: "Node 2", id: "0000006", children: [] },
+];
+
+const treeElement = document.querySelector("uc-tree");
+treeElement.data = data;
