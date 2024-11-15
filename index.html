@@ -5,14 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Components</title>
     <script src="modal.js"></script>
+    <script src="drawer.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <uc-modal>
-      <div slot="modal-header">Confirm</div>
-      <p>Are you sure you want to confirm the payment?</p>
-    </uc-modal>
-    <button id="open-modal" onclick="onButtonClick()">Open Modal</button>
+    <!-- Modal related structure -->
+    <section>
+      <uc-modal>
+        <div slot="modal-header">Confirm</div>
+        <p>Are you sure you want to confirm the payment?</p>
+      </uc-modal>
+      <button id="open-modal" onclick="onModalOpenButtonClick()">Open Modal</button>
+    </section>
+
+    <!-- Drawer related structure -->
+    <section>
+      <uc-drawer>
+        <nav slot="drawer-content">
+          <div class="nav-item"><a href="#home">Home</a></div>
+          <div class="nav-item"><a href="#news">News</a></div>
+          <div class="nav-item"><a href="#contact">Contact</a></div>
+          <div class="nav-item"><a href="#about">About</a></div>
+        </nav>
+      </uc-drawer>
+      <button id="open-drawer-top" onclick="onDrawerOpenButtonClick('top')">
+        Open Drawer on Top
+      </button>
+      <button id="open-drawer-right" onclick="onDrawerOpenButtonClick('right')">
+        Open Drawer on Right
+      </button>
+      <button id="open-drawer-bottom" onclick="onDrawerOpenButtonClick('bottom')">
+        Open Drawer on Bottom
+      </button>
+      <button id="open-drawer-left" onclick="onDrawerOpenButtonClick('left')">
+        Open Drawer on Left
+      </button>
+    </section>
   </body>
   <script src="script.js"></script>
 </html>

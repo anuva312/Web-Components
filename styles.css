@@ -1,3 +1,7 @@
+section {
+  margin: 15px;
+}
+
 button {
   padding: 5px;
   cursor: pointer;
@@ -9,4 +13,22 @@ button {
 
 button:hover {
   border: 1px solid #96b0da;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  height: 100%;
+  padding: 15px;
+}
+
+uc-drawer[position="left"] nav,
+uc-drawer[position="right"] nav {
+  flex-direction: column;
 }
