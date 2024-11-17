@@ -7,15 +7,15 @@ body {
 button {
   cursor: pointer;
   background: #fff;
-  border: 1px solid #2f80ed;
+  border: 1px solid #0b3f85;
   border-radius: 8px;
-  color: #2f80ed;
+  color: #0b3f85;
   padding: 8px 16px;
   margin: 8px 0;
 }
 
 button:hover {
-  background: #2f80ed;
+  background: #0b3f85;
   color: #fff;
 }
 
@@ -35,4 +35,9 @@ nav {
 uc-drawer[position="left"] nav,
 uc-drawer[position="right"] nav {
   flex-direction: column;
+}
+
+.heading {
+  font-size: 18px;
+  margin-top: 16px;
 }

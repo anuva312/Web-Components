@@ -56,14 +56,14 @@ class Modal extends HTMLElement {
             button{
                 cursor : pointer;
                 background: #fff;
-                border: 1px solid #2f80ed;
+                border: 1px solid #0b3f85;
                 border-radius: 8px;
-                color: #2f80ed;
+                color: #0b3f85;
                 padding: 8px 16px;
             }
 
             button:hover{
-                background: #2f80ed;
+                background: #0b3f85;
                 color: #fff;
             }
         </style>
