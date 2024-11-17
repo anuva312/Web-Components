@@ -66,3 +66,17 @@ treeElement.data = data;
 treeElement.addEventListener("node-click", (event) => {
   console.log("Node Clicked", event.detail);
 });
+
+const onTreeSetSelectedButtonClick = function () {
+  treeElement.setSelected("0000005");
+};
+
+const onTreeClearSelectedButtonClick = function () {
+  treeElement.clearSelected();
+};
+
+const onTreeGetSelectedButtonClick = function () {
+  const selected = treeElement.getSelected();
+  console.log("Selected node: ", selected);
+  alert(`The selected node is ${selected?.name ?? ""}`);
+};
