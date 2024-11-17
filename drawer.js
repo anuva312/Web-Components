@@ -114,7 +114,7 @@ class Drawer extends HTMLElement {
         </style>
         <div id="backdrop"></div>
         <div id="drawer">
-            <slot name="drawer-content"></slot>
+            <slot></slot>
         </div>
     `;
 
