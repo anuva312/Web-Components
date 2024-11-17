@@ -2,7 +2,9 @@ class Tree extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.nodeElements = [];
+    this._selectedNodeElement = null;
+    this._selectedNode = null;
+    this._nodeElements = {};
     this.shadowRoot.innerHTML = `
           <style>
             #tree {
@@ -30,6 +32,11 @@ class Tree extends HTMLElement {
               cursor: not-allowed;
               opacity: 0.5;
             }
+
+            .node-name.selected {
+              color: #0b3f85;
+              font-weight: 600;
+            }
           </style>
           <div id="tree"></div>
       `;
@@ -46,12 +53,13 @@ class Tree extends HTMLElement {
   }
 
   _deleteEventListeners() {
-    for (const nodeItem of this.nodeElements) {
+    for (const nodeId in this._nodeElements) {
+      let nodeItem = this._nodeElements[nodeId];
       nodeItem.nodeNameElement?.removeEventListener("click", () => {
         this._onNodeClicked(nodeItem.node);
       });
     }
-    this.nodeElements = [];
+    this._nodeElements = {};
   }
 
   _renderTree(nodes, container, isRoot) {
@@ -72,20 +80,49 @@ class Tree extends HTMLElement {
         this._renderTree(node.children, nodeItem);
       }
 
-      this.nodeElements.push({
+      this._nodeElements[node.id] = {
         node,
         nodeNameElement,
-      });
+      };
       container.appendChild(nodeItem);
     });
   }
 
   _onNodeClicked(node) {
-    if (node.disabled) return;
+    if (node.disabled || node.id === this._selectedNode?.id) return;
     const event = new CustomEvent("node-click", {
       detail: node,
     });
+    this.setSelected(node.id);
     this.dispatchEvent(event);
+  }
+
+  setSelected(nodeId) {
+    if (nodeId === this._selectedNode?.id) return;
+    const selectedNode = this._nodeElements[nodeId];
+    if (this._selectedNodeElement) {
+      this._selectedNodeElement.classList.remove("selected");
+    }
+    if (selectedNode) {
+      this._selectedNode = selectedNode.node;
+      this._selectedNodeElement = selectedNode.nodeNameElement;
+      this._selectedNodeElement.classList.add("selected");
+    } else {
+      this._selectedNode = null;
+      this._selectedNodeElement = null;
+    }
+  }
+
+  clearSelected() {
+    if (this._selectedNodeElement) {
+      this._selectedNodeElement.classList.remove("selected");
+      this._selectedNode = null;
+      this._selectedNodeElement = null;
+    }
+  }
+
+  getSelected() {
+    return this._selectedNode;
   }
 }
 
