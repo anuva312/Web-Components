@@ -19,6 +19,8 @@
   <body>
     <!-- Modal related structure -->
     <section>
+      <div class="heading">Modal Component</div>
+      <hr />
       <uc-modal>
         <div slot="modal-header">Confirm Payment</div>
         <p>Are you sure you want to confirm the payment?</p>
@@ -30,6 +32,8 @@
 
     <!-- Drawer related structure -->
     <section>
+      <div class="heading">Drawer Component</div>
+      <hr />
       <uc-drawer>
         <nav slot="drawer-content">
           <div class="nav-item"><a href="#home">Home</a></div>
@@ -55,7 +59,21 @@
       </button>
     </section>
     <section>
+      <div class="heading">Tree Component</div>
+      <hr />
       <uc-tree clickable></uc-tree>
+      <button id="tree-set-selected" onclick="onTreeSetSelectedButtonClick()">
+        Set selected node as Node 1-2-1
+      </button>
+      <button id="tree-get-selected" onclick="onTreeGetSelectedButtonClick()">
+        Get selected node
+      </button>
+      <button
+        id="tree-clear-selected"
+        onclick="onTreeClearSelectedButtonClick()"
+      >
+        Clear selection
+      </button>
     </section>
   </body>
   <script src="script.js"></script>
