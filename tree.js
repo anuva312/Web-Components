@@ -20,15 +20,11 @@ class Tree extends HTMLElement {
               padding: 5px 0;
             }
 
-            :host:not([clickable]) .node-name {
-              pointer-events: none;
-            }
-
-            :host([clickable]) .node-name {
+            :host([selectable]) .node-name {
               cursor: pointer;
             }
 
-            :host([clickable]) .node-name.disabled {
+            :host([selectable]) .node-name.disabled {
               cursor: not-allowed;
               opacity: 0.5;
             }
@@ -89,7 +85,12 @@ class Tree extends HTMLElement {
   }
 
   _onNodeClicked(node) {
-    if (node.disabled || node.id === this._selectedNode?.id) return;
+    if (
+      node.disabled ||
+      !this._checkIfSelectable() ||
+      node.id === this._selectedNode?.id
+    )
+      return;
     const event = new CustomEvent("node-click", {
       detail: node,
     });
@@ -97,8 +98,16 @@ class Tree extends HTMLElement {
     this.dispatchEvent(event);
   }
 
+  _checkIfSelectable() {
+    const isSelectable = this.hasAttribute("selectable");
+    if (!isSelectable) {
+      console.warn("The nodes are not selectable");
+    }
+    return isSelectable;
+  }
+
   setSelected(nodeId) {
-    if (nodeId === this._selectedNode?.id) return;
+    if (!this._checkIfSelectable() || nodeId === this._selectedNode?.id) return;
     const selectedNode = this._nodeElements[nodeId];
     if (this._selectedNodeElement) {
       this._selectedNodeElement.classList.remove("selected");
@@ -114,6 +123,7 @@ class Tree extends HTMLElement {
   }
 
   clearSelected() {
+    if (!this._checkIfSelectable()) return;
     if (this._selectedNodeElement) {
       this._selectedNodeElement.classList.remove("selected");
       this._selectedNode = null;
@@ -122,6 +132,7 @@ class Tree extends HTMLElement {
   }
 
   getSelected() {
+    this._checkIfSelectable();
     return this._selectedNode;
   }
 }
