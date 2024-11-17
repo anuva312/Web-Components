@@ -16,7 +16,9 @@
         <div slot="modal-header">Confirm</div>
         <p>Are you sure you want to confirm the payment?</p>
       </uc-modal>
-      <button id="open-modal" onclick="onModalOpenButtonClick()">Open Modal</button>
+      <button id="open-modal" onclick="onModalOpenButtonClick()">
+        Open Modal
+      </button>
     </section>
 
     <!-- Drawer related structure -->
@@ -35,7 +37,10 @@
       <button id="open-drawer-right" onclick="onDrawerOpenButtonClick('right')">
         Open Drawer on Right
       </button>
-      <button id="open-drawer-bottom" onclick="onDrawerOpenButtonClick('bottom')">
+      <button
+        id="open-drawer-bottom"
+        onclick="onDrawerOpenButtonClick('bottom')"
+      >
         Open Drawer on Bottom
       </button>
       <button id="open-drawer-left" onclick="onDrawerOpenButtonClick('left')">
@@ -43,7 +48,7 @@
       </button>
     </section>
     <section>
-      <uc-tree></uc-tree>
+      <uc-tree clickable></uc-tree>
     </section>
   </body>
   <script src="script.js"></script>

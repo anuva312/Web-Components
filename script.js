@@ -30,22 +30,31 @@ const data = [
     id: "0000001",
     children: [
       {
-        name: "Node 12",
+        name: "Node 1-2",
         id: "0000002",
         children: [
           {
-            name: "Node 121",
+            name: "Node 1-2-1",
             id: "0000005",
-            children: [{ name: "Node 1211", id: "0000001", children: [] }],
+            children: [
+              {
+                name: "Node 1-2-1-1",
+                id: "0000001",
+                children: [],
+                disabled: true,
+              },
+            ],
           },
         ],
       },
       {
-        name: "Node 13",
+        name: "Node 1-3",
         id: "0000003",
-        children: [{ name: "Node 131", id: "0000006", children: [] }],
+        children: [
+          { name: "Node 1-3-1", id: "0000006", children: [], disabled: true },
+        ],
       },
-      { name: "Node 14", id: "0000004", children: [] },
+      { name: "Node 1-4", id: "0000004", children: [] },
     ],
   },
   { name: "Node 2", id: "0000006", children: [] },
@@ -53,3 +62,7 @@ const data = [
 
 const treeElement = document.querySelector("uc-tree");
 treeElement.data = data;
+
+treeElement.addEventListener("node-click", (event) => {
+  console.log("Node Clicked", event.detail);
+});
