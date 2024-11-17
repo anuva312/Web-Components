@@ -60,23 +60,51 @@ const data = [
   { name: "Node 2", id: "0000006", children: [] },
 ];
 
-const treeElement = document.querySelector("uc-tree");
+// For tree component that is selectable
+
+const treeElement = document.querySelector("uc-tree.selectable-tree");
 treeElement.data = data;
 
 treeElement.addEventListener("node-click", (event) => {
   console.log("Node Clicked", event.detail);
 });
 
-const onTreeSetSelectedButtonClick = function () {
-  treeElement.setSelected("0000005");
+// For tree component that is not selectable
+
+const treeElementUnSelectable = document.querySelector(
+  "uc-tree.un-selectable-tree"
+);
+treeElementUnSelectable.data = data;
+
+treeElementUnSelectable.addEventListener("node-click", (event) => {
+  console.log("Node Clicked", event.detail);
+});
+
+// Common click events
+
+const onTreeSetSelectedButtonClick = function (type) {
+  if (type === "selectable") {
+    treeElement.setSelected("0000005");
+  } else {
+    treeElementUnSelectable.setSelected("0000005");
+  }
 };
 
-const onTreeClearSelectedButtonClick = function () {
-  treeElement.clearSelected();
+const onTreeClearSelectedButtonClick = function (type) {
+  if (type === "selectable") {
+    treeElement.clearSelected();
+  } else {
+    treeElementUnSelectable.clearSelected();
+  }
 };
 
-const onTreeGetSelectedButtonClick = function () {
-  const selected = treeElement.getSelected();
+const onTreeGetSelectedButtonClick = function (type) {
+  let selected = null;
+  if (type === "selectable") {
+    selected = treeElement.getSelected();
+  } else {
+    selected = treeElementUnSelectable.getSelected();
+  }
   console.log("Selected node: ", selected);
   alert(`The selected node is ${selected?.name ?? ""}`);
 };
