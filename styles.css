@@ -38,6 +38,24 @@ uc-drawer[position="right"] nav {
 }
 
 .heading {
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 16px;
+}
+
+.tree-component-section {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.tree-component {
+  border: 1px solid #0b3f85;
+  border-radius: 8px;
+  width: max-content;
+  padding: 8px;
+}
+
+.sub-heading {
+  font-size: 18;
+  color: #0b3f85;
 }
