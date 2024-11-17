@@ -7,10 +7,10 @@ const onModalOpenButtonClick = function () {
 };
 if (modalElement) {
   modalElement.addEventListener("confirm", () => {
-    console.log("Modal closed, confirm");
+    console.log("Confirm clicked, closing modal");
   });
   modalElement.addEventListener("cancel", () => {
-    console.log("Modal closed, cancel");
+    console.log("Canceled, closing modal");
   });
 }
 

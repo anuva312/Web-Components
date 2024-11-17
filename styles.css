@@ -1,18 +1,22 @@
-section {
-  margin: 15px;
+body {
+  font-family: Roboto;
+  font-size: 16px;
+  margin: 10px;
 }
 
 button {
-  padding: 5px;
   cursor: pointer;
-  background-color: #829cc5;
-  border: none;
-  border-radius: 5px;
-  color: white;
+  background: #fff;
+  border: 1px solid #2f80ed;
+  border-radius: 8px;
+  color: #2f80ed;
+  padding: 8px 16px;
+  margin: 8px 0;
 }
 
 button:hover {
-  border: 1px solid #96b0da;
+  background: #2f80ed;
+  color: #fff;
 }
 
 a:link {

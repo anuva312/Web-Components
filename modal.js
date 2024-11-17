@@ -55,6 +55,16 @@ class Modal extends HTMLElement {
 
             button{
                 cursor : pointer;
+                background: #fff;
+                border: 1px solid #2f80ed;
+                border-radius: 8px;
+                color: #2f80ed;
+                padding: 8px 16px;
+            }
+
+            button:hover{
+                background: #2f80ed;
+                color: #fff;
             }
         </style>
         <div id="backdrop"></div>
@@ -66,8 +76,8 @@ class Modal extends HTMLElement {
                 <slot></slot>
             </section>
             <footer>
-                <button id="confirm-btn">Confirm</button>
                 <button id="cancel-btn">Cancel</button>
+                <button id="confirm-btn">Confirm</button>
             </footer>
         </div>
     `;

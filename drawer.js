@@ -19,7 +19,8 @@ class Drawer extends HTMLElement {
                 position: fixed;
                 background: white;
                 box-shadow: 2px 2px #ccc;
-                display: none;         
+                display: none; 
+                z-index: 100;        
             }
 
             :host([opened]) #backdrop{

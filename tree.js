@@ -5,8 +5,17 @@ class Tree extends HTMLElement {
     this.nodeElements = [];
     this.shadowRoot.innerHTML = `
           <style>
+            #tree {
+              padding: 8px;
+              width: max-content;
+            }
+
             .node-item:not(.root-node-item) {
               padding-left: 15px;
+            }
+
+            .node-name {
+              padding: 5px 0;
             }
 
             :host:not([clickable]) .node-name {
@@ -50,7 +59,7 @@ class Tree extends HTMLElement {
       const nodeItem = document.createElement("div");
       nodeItem.classList.add("node-item");
       isRoot && nodeItem.classList.add("root-node-item");
-      const nodeNameElement = document.createElement("span");
+      const nodeNameElement = document.createElement("div");
       nodeNameElement.textContent = node.name;
       nodeNameElement.classList.add("node-name");
       node.disabled && nodeNameElement.classList.add("disabled");

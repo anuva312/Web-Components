@@ -8,12 +8,19 @@
     <script src="drawer.js"></script>
     <script src="tree.js"></script>
     <link rel="stylesheet" href="styles.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Modal related structure -->
     <section>
       <uc-modal>
-        <div slot="modal-header">Confirm</div>
+        <div slot="modal-header">Confirm Payment</div>
         <p>Are you sure you want to confirm the payment?</p>
       </uc-modal>
       <button id="open-modal" onclick="onModalOpenButtonClick()">
