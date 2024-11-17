@@ -61,19 +61,52 @@
     <section>
       <div class="heading">Tree Component</div>
       <hr />
-      <uc-tree clickable></uc-tree>
-      <button id="tree-set-selected" onclick="onTreeSetSelectedButtonClick()">
-        Set selected node as Node 1-2-1
-      </button>
-      <button id="tree-get-selected" onclick="onTreeGetSelectedButtonClick()">
-        Get selected node
-      </button>
-      <button
-        id="tree-clear-selected"
-        onclick="onTreeClearSelectedButtonClick()"
-      >
-        Clear selection
-      </button>
+      <div class="tree-component-section">
+        <div class="tree-component">
+          <div class="sub-heading">Tree Component (selectable)</div>
+          <uc-tree selectable class="selectable-tree"></uc-tree>
+          <button
+            class="tree-set-selected"
+            onclick="onTreeSetSelectedButtonClick('selectable')"
+          >
+            Set selected node as Node 1-2-1
+          </button>
+          <button
+            class="tree-get-selected"
+            onclick="onTreeGetSelectedButtonClick('selectable')"
+          >
+            Get selected node
+          </button>
+          <button
+            class="tree-clear-selected"
+            onclick="onTreeClearSelectedButtonClick('selectable')"
+          >
+            Clear selection
+          </button>
+        </div>
+        <div class="tree-component">
+          <div class="sub-heading">Tree Component (un-selectable)</div>
+          <uc-tree class="un-selectable-tree"></uc-tree>
+          <button
+            class="tree-set-selected"
+            onclick="onTreeSetSelectedButtonClick()"
+          >
+            Set selected node as Node 1-2-1
+          </button>
+          <button
+            class="tree-get-selected"
+            onclick="onTreeGetSelectedButtonClick()"
+          >
+            Get selected node
+          </button>
+          <button
+            class="tree-clear-selected"
+            onclick="onTreeClearSelectedButtonClick()"
+          >
+            Clear selection
+          </button>
+        </div>
+      </div>
     </section>
   </body>
   <script src="script.js"></script>
