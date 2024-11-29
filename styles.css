@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Roboto;
   font-size: 16px;
@@ -17,6 +21,10 @@ button {
 button:hover {
   background: #0b3f85;
   color: #fff;
+}
+
+label {
+  font-size: 14px;
 }
 
 a:link {
@@ -48,14 +56,46 @@ uc-drawer[position="right"] nav {
   padding: 16px 0;
 }
 
-.tree-component {
+.tree-component,
+.modal-component-section {
   border: 1px solid #0b3f85;
   border-radius: 8px;
   width: max-content;
   padding: 8px;
 }
 
+.modal-component-section {
+  width: 300px;
+}
+
 .sub-heading {
   font-size: 18;
   color: #0b3f85;
+}
+
+.modal-controls {
+  margin-bottom: 8px;
+}
+
+.modal-controls.hide-cancel-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.modal-controls.hide-cancel-button input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
+
+.modal-controls.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-controls input {
+  padding: 5px;
+  border: 1px solid #0b3f85;
+  border-radius: 5px;
+  width: 100%;
 }

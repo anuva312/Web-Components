@@ -3,6 +3,8 @@ class Modal extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.isModalOpen = false;
+    this._confirmButtonLabel = "Confirm";
+    this._cancelButtonLabel = "Cancel";
     this.shadowRoot.innerHTML = `
         <style>
             #backdrop{
@@ -39,6 +41,7 @@ class Modal extends HTMLElement {
 
             footer{
                 display : flex;
+                flex-direction: row-reverse;
                 justify-content : space-between;
             }
                 
@@ -66,6 +69,10 @@ class Modal extends HTMLElement {
                 background: #0b3f85;
                 color: #fff;
             }
+
+            :host([hide-cancel-button]) #cancel-btn{
+                display: none;
+            }
         </style>
         <div id="backdrop"></div>
         <div id="modal">
@@ -76,31 +83,58 @@ class Modal extends HTMLElement {
                 <slot></slot>
             </section>
             <footer>
-                <button id="cancel-btn">Cancel</button>
-                <button id="confirm-btn">Confirm</button>
+                <button id="confirm-btn">${this._confirmButtonLabel}</button>
+                <button id="cancel-btn">${this._cancelButtonLabel}</button>
             </footer>
         </div>
     `;
 
-    this._confirmBtn = null;
-    this._cancelBtn = null;
+    this._confirmButton = null;
+    this._cancelButton = null;
     this._backDrop = null;
   }
 
   connectedCallback() {
-    this._confirmBtn = this.shadowRoot.getElementById("confirm-btn");
-    this._cancelBtn = this.shadowRoot.getElementById("cancel-btn");
+    this._confirmButton = this.shadowRoot.getElementById("confirm-btn");
+    this._cancelButton = this.shadowRoot.getElementById("cancel-btn");
     this._backDrop = this.shadowRoot.getElementById("backdrop");
 
-    this._confirmBtn?.addEventListener("click", this._confirm.bind(this));
-    this._cancelBtn?.addEventListener("click", this._cancel.bind(this));
+    this._confirmButton.textContent = this._confirmButtonLabel;
+    this._cancelButton.textContent = this._cancelButtonLabel;
+
+    this._confirmButton?.addEventListener("click", this._confirm.bind(this));
+    this._cancelButton?.addEventListener("click", this._cancel.bind(this));
     this._backDrop?.addEventListener("click", this._cancel.bind(this));
   }
 
   disconnectedCallback() {
-    this._confirmBtn?.removeEventListener("click", this._confirm.bind(this));
-    this._cancelBtn?.removeEventListener("click", this._cancel.bind(this));
+    this._confirmButton?.removeEventListener("click", this._confirm.bind(this));
+    this._cancelButton?.removeEventListener("click", this._cancel.bind(this));
     this._backDrop?.removeEventListener("click", this._cancel.bind(this));
+  }
+
+  static get observedAttributes() {
+    return ["confirm-button-label", "cancel-button-label"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    switch (name) {
+      case "confirm-button-label":
+        this._confirmButtonLabel = newValue || "Confirm";
+        if (this._confirmButton) {
+          this._confirmButton.textContent = this._confirmButtonLabel;
+        }
+        break;
+      case "cancel-button-label":
+        this._cancelButtonLabel = newValue || "Cancel";
+        if (this._cancelButton) {
+          this._cancelButton.textContent = this._cancelButtonLabel;
+        }
+        break;
+      default:
+        break;
+    }
   }
 
   open() {
