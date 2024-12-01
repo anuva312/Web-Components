@@ -31,10 +31,12 @@ const updateModalAttributes = function (attributeObj) {
       if (key === "hide-cancel-button") {
         if (!attributeObj[key]) {
           modalElement.removeAttribute(key);
-          continue;
+        } else {
+          modalElement.setAttribute(key, "");
         }
+      } else {
+        modalElement.setAttribute(key, attributeObj[key]);
       }
-      modalElement.setAttribute(key, attributeObj[key]);
     }
   }
 };
