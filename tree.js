@@ -87,7 +87,7 @@ class Tree extends HTMLElement {
   _onNodeClicked(node) {
     if (
       node.disabled ||
-      !this._checkIfSelectable() ||
+      !this._checkIfSelectable(true) ||
       node.id === this._selectedNode?.id
     )
       return;
@@ -98,9 +98,9 @@ class Tree extends HTMLElement {
     this.dispatchEvent(event);
   }
 
-  _checkIfSelectable() {
+  _checkIfSelectable(isClicked) {
     const isSelectable = this.hasAttribute("selectable");
-    if (!isSelectable) {
+    if (!(isSelectable || isClicked)) {
       console.warn("The nodes are not selectable");
     }
     return isSelectable;

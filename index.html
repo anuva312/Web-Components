@@ -17,39 +17,6 @@
     />
   </head>
   <body>
-    <!-- Modal related structure -->
-    <section>
-      <div class="heading">Modal Component</div>
-      <hr />
-      <div class="modal-component-section">
-        <uc-modal>
-          <div slot="modal-header">Modal Header</div>
-          <p>This is the default slot and here goes the modal content!</p>
-        </uc-modal>
-        <div class="modal-controls">
-          <label for="confirm-button-label">Confirm Button Label:</label><br />
-          <input type="text" id="confirm-button-label-input" name="confirm-button-label" />
-        </div>
-        <div class="modal-controls">
-          <label for="cancel-button-label">Cancel Button Label:</label><br />
-          <input type="text" id="cancel-button-label-input" name="cancel-button-label" />
-        </div>
-        <div class="modal-controls hide-cancel-button">
-          <label for="hide-cancel-button">Hide cancel button</label>
-          <input
-            type="checkbox"
-            id="hide-cancel-button-checkbox"
-            name="hide-cancel-button"
-            value="hide-cancel-button"
-          />
-        </div>
-        <div class="modal-controls button-container">
-          <button id="reset-controls" onclick="onResetControlsButtonClick()">Reset Controls</button>
-          <button id="open-modal" onclick="onModalOpenButtonClick()">Open Modal</button>
-        </div>
-      </div>
-    </section>
-
     <!-- Drawer related structure -->
     <section>
       <div class="heading">Drawer Component</div>
@@ -68,45 +35,114 @@
       <button id="open-drawer-right" onclick="onDrawerOpenButtonClick('right')">
         Open Drawer on Right
       </button>
-      <button id="open-drawer-bottom" onclick="onDrawerOpenButtonClick('bottom')">
+      <button
+        id="open-drawer-bottom"
+        onclick="onDrawerOpenButtonClick('bottom')"
+      >
         Open Drawer on Bottom
       </button>
       <button id="open-drawer-left" onclick="onDrawerOpenButtonClick('left')">
         Open Drawer on Left
       </button>
     </section>
+
+    <!-- Modal related structure -->
+    <section>
+      <div class="heading">Modal Component</div>
+      <hr />
+      <div class="modal-component-section">
+        <uc-modal>
+          <div slot="modal-header">Modal Header</div>
+          <p>This is the default slot and here goes the modal content!</p>
+        </uc-modal>
+        <div class="modal-controls">
+          <label for="confirm-button-label">Confirm Button Label:</label><br />
+          <input
+            type="text"
+            id="confirm-button-label-input"
+            name="confirm-button-label"
+          />
+        </div>
+        <div class="modal-controls">
+          <label for="cancel-button-label">Cancel Button Label:</label><br />
+          <input
+            type="text"
+            id="cancel-button-label-input"
+            name="cancel-button-label"
+          />
+        </div>
+        <div class="modal-controls hide-cancel-button">
+          <label for="hide-cancel-button">Hide cancel button</label>
+          <input
+            type="checkbox"
+            id="hide-cancel-button-checkbox"
+            name="hide-cancel-button"
+            value="hide-cancel-button"
+          />
+        </div>
+        <div class="modal-controls button-container">
+          <button id="reset-controls" onclick="onResetControlsButtonClick()">
+            Reset Controls
+          </button>
+          <button id="open-modal" onclick="onModalOpenButtonClick()">
+            Open Modal
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tree related structure -->
     <section>
       <div class="heading">Tree Component</div>
       <hr />
       <div class="tree-component-section">
         <div class="tree-component">
           <div class="sub-heading">Tree Component (selectable)</div>
-          <uc-tree selectable class="selectable-tree"></uc-tree>
-          <button class="tree-set-selected" onclick="onTreeSetSelectedButtonClick('selectable')">
-            Set selected node as Node 1-2-1
-          </button>
-          <button class="tree-get-selected" onclick="onTreeGetSelectedButtonClick('selectable')">
-            Get selected node
-          </button>
-          <button
-            class="tree-clear-selected"
-            onclick="onTreeClearSelectedButtonClick('selectable')"
-          >
-            Clear selection
-          </button>
+          <uc-tree selectable id="selectable-tree"></uc-tree>
+          <div>
+            <button
+              class="tree-set-selected"
+              onclick="onTreeSetSelectedButtonClick('selectable')"
+            >
+              Set selected node as Node 1-2-1
+            </button>
+            <button
+              class="tree-get-selected"
+              onclick="onTreeGetSelectedButtonClick('selectable')"
+            >
+              Get selected node
+            </button>
+            <button
+              class="tree-clear-selected"
+              onclick="onTreeClearSelectedButtonClick('selectable')"
+            >
+              Clear selection
+            </button>
+          </div>
         </div>
         <div class="tree-component">
           <div class="sub-heading">Tree Component (un-selectable)</div>
-          <uc-tree class="un-selectable-tree"></uc-tree>
-          <button class="tree-set-selected" onclick="onTreeSetSelectedButtonClick()">
-            Set selected node as Node 1-2-1
-          </button>
-          <button class="tree-get-selected" onclick="onTreeGetSelectedButtonClick()">
-            Get selected node
-          </button>
-          <button class="tree-clear-selected" onclick="onTreeClearSelectedButtonClick()">
-            Clear selection
-          </button>
+          <uc-tree id="un-selectable-tree"></uc-tree>
+          <div>
+            <button
+              class="tree-set-selected"
+              onclick="onTreeSetSelectedButtonClick()"
+            >
+              Set selected node as Node 1-2-1
+            </button>
+            <button
+              class="tree-get-selected"
+              onclick="onTreeGetSelectedButtonClick()"
+            >
+              Get selected node
+            </button>
+            <button
+              class="tree-clear-selected"
+              onclick="onTreeClearSelectedButtonClick()"
+            >
+              Clear selection
+            </button>
+          </div>
         </div>
       </div>
     </section>
